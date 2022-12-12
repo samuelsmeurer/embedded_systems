@@ -37,21 +37,21 @@ void novas_mensagens(int num_novas_mensagens)
 
     if (text == "Ligar")
     {
-      digitalWrite(ledPin, HIGH); // turn the LED on (HIGH is the voltage level)
-      ledStatus = 1;
+      digitalWrite(pino_led, HIGH); // turn the LED on (HIGH is the voltage level)
+      status_led = 1;
       bot.sendMessage(chat_id, "Led is ON", "");
     }
 
     if (text == "Desligar")
     {
-      ledStatus = 0;
+      status_led = 0;
       digitalWrite(pino_led,LOW); // turn the LED off (LOW is the voltage level)
       bot.sendMessage(chat_id, "Led is OFF", "");
     }
 
     if (text == "/status")
     {
-      if (ledStatus)
+      if (status_led)
       {
         bot.sendMessage(chat_id, "Led is ON", "");
       }
@@ -109,7 +109,7 @@ void setup()
 }
 
 void loop()
-{
+{/*
   if (millis() - bot_lasttime > BOT_MTBS)
   {
     int numNewMessages = bot.getUpdates(bot.last_message_received + 1);
@@ -117,10 +117,10 @@ void loop()
     while (numNewMessages)
     {
       Serial.println("got response");
-      handleNewMessages(numNewMessages);
+      novas_mensagens(numNewMessages);
       numNewMessages = bot.getUpdates(bot.last_message_received + 1);
     }
 
     bot_lasttime = millis();
-  }
+  }*/
 }
